@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Call the shared function for SonarQube analysis
-                    sonar.runSonarQubeAnalysis(
+                    runSonarQubeAnalysis(
                         sonarEnv: 'sn1',  // Specify the SonarQube environment (can be 'sn1', 'sn2', etc.)
                         projectDir: 'my-demo-app'  // Path to the project directory
                     )
