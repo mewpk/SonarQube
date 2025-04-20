@@ -24,3 +24,8 @@ spring --version
 ```sh
 spring init --dependencies=web --java-version=21 --language=java my-demo-app
 ```
+## Run App
+```sh
+cd ./my-demo-app
+./gradlew bootRun
+```
