@@ -4,14 +4,17 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   stages {
-    stage('Scan') {
-      steps {
-        dir('my-demo-app') {
-          withSonarQubeEnv(installationName: 'sn1') { 
-            sh './gradlew clean sonarqube --info'
-          }
+    stage('Build and SonarQube Analysis') {
+        steps {
+            script {
+                // Build project
+                sh './gradlew build'
+
+                // Run SonarQube analysis
+                sh './gradlew sonarqube'
+            }
         }
-      }
     }
   }
 }
+
