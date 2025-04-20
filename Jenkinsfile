@@ -5,17 +5,17 @@ pipeline {
   }
   stages {
     stage('Build and Scan') {
-        steps {
-            dir('my-demo-app') {
-                withSonarQubeEnv(installationName: 'sn1') {
-                    // ทำการ clean และ build โปรเจกต์ก่อน
-                    sh './gradlew clean build'
-                    
-                    // รัน SonarQube analysis หลังจากที่ build เสร็จ
-                    sh './gradlew sonarqube --info'
-                }
-            }
+      steps {
+        dir('my-demo-app') {
+          withSonarQubeEnv(installationName: 'sn1') {
+            // Clean and build the project first
+            sh './gradlew clean build'
+            
+            // Run SonarQube analysis after build
+            sh './gradlew sonarqube --info'
+          }
         }
+      }
     }
     stage("Quality Gate") {
       steps {
@@ -25,7 +25,6 @@ pipeline {
       }
     }
   }
-}
   post {
     always {
       script {
@@ -40,3 +39,4 @@ pipeline {
       echo 'Build or SonarQube analysis failed.'
     }
   }
+}
