@@ -8,7 +8,7 @@ pipeline {
       steps {
         dir('my-demo-app') {
           withSonarQubeEnv(installationName: 'sn1') { 
-            sh './gradlew clean sonarqube'
+            sh './gradlew clean sonarqube --info'
           }
         }
       }
