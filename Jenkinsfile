@@ -17,6 +17,26 @@ pipeline {
             }
         }
     }
+    stage("Quality Gate") {
+      steps {
+        timeout(time: 2, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
+      }
+    }
+  }
 }
-
-}
+  post {
+    always {
+      script {
+        // Clean up the workspace after the build
+        cleanWs()
+      }
+    }
+    success {
+      echo 'Build and SonarQube analysis completed successfully.'
+    }
+    failure {
+      echo 'Build or SonarQube analysis failed.'
+    }
+  }
