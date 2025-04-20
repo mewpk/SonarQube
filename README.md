@@ -22,5 +22,5 @@ spring --version
 
 ## Spring Boot Project
 ```sh
-spring init --dependencies=web --java-version=21 --build=gradle --language=groovy my-demo-app
+spring init --dependencies=web --java-version=21 --language=java my-demo-app
 ```
