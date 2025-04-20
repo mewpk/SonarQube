@@ -16,7 +16,6 @@ java {
 sonarqube {
     properties {
         property "sonar.projectKey", "my-demo-app"
-        property "sonar.host.url", "http://docker.orb.local:9000" // URL to your SonarQube server
 		property "sonar.java.binaries", "$buildDir/classes/java/main"
 	}
 }
